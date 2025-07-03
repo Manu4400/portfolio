@@ -242,7 +242,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## 📞 Support
 
-For support and questions, please open an issue in the GitHub repository or contact [your-email@example.com].
+For support and questions, please open an issue in the GitHub repository or contact [manoharmr1234@gmail.com].
 
 ## 🙏 Acknowledgments
 
