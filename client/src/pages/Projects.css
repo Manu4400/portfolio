@@ -1,0 +1,177 @@
+.projects-page {
+  padding: 2rem 0 4rem;
+  min-height: 100vh;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.projects-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projects-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.projects-filter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #667eea;
+  background: transparent;
+  color: #667eea;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.no-projects {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(80, 80, 180, 0.08);
+  padding: 2rem 1.5rem;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 32px rgba(80, 80, 180, 0.16);
+}
+
+.project-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  color: #4b3fa7;
+}
+
+.project-card h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #222;
+  font-weight: 400;
+}
+
+.project-date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.project-link {
+  margin-top: 1rem;
+  color: #6c63ff;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  color: #4b3fa7;
+}
+
+.projects-page h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #4b3fa7;
+  text-align: center;
+}
+
+.project-title {
+  color: #4b3fa7;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.project-link-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fff 0%, #fff 100%);
+  color: #6c63ff;
+  border: 2px solid #6c63ff;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(80, 80, 180, 0.08);
+}
+
+.project-link-btn:hover {
+  background: linear-gradient(90deg, #6c63ff 0%, #48c6ef 100%);
+  color: #fff;
+  border-color: #6c63ff;
+  box-shadow: 0 4px 16px rgba(80, 80, 180, 0.16);
+}
+
+@media screen and (max-width: 768px) {
+  .projects-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .projects-filter {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-btn {
+    min-width: 200px;
+    justify-content: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+} 
