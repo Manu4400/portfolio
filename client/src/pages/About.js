@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaDownload, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import './About.css';
 
-const aboutData = {
-  name: 'M R MANOHAR',
-  email: 'manoharmr1234@gmaill.com',
-  phone: '+91 8296705600',
-  linkedin: 'https://www.linkedin.com/in/manohar-m-r-a6411222b/',
-  title: 'Computer Science Student',
-  description: 'Detail-orientated computer science student with strong problem-solving skills in data structures and algorithms, adept at optimising solutions. Proficient in Java, C, HTML, and CSS. Committed to writing clean, scalable, and efficient code.'
-};
-
 const About = () => {
+  const [aboutData, setAboutData] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/about')
+      .then(res => res.json())
+      .then(data => setAboutData(data));
+  }, []);
+
+  if (!aboutData) return <div>Loading...</div>;
+
   return (
     <div className="about-page">
       <div className="container">

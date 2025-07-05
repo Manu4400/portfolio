@@ -1,37 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaCalendarAlt } from 'react-icons/fa';
 import './Experience.css';
 
-const experiences = [
-  {
-    company: 'Vstan4u Solution, Bengaluru',
-    position: 'Intern — Java FullStack',
-    date: 'Feb - June 2025',
-    description: [
-      'Gained practical experience in developing website by using core java, Spring Boot, HTML, CSS, and JS'
-    ]
-  },
-  {
-    company: 'Inventron Technologies, Bengaluru',
-    position: 'Intern — Innovation and Entrepreneurship',
-    date: 'Oct – Nov 2023',
-    description: [
-      'Designed a solar-powered mobile charging case and developed its prototype and business plan.',
-      'Conducted market research and collaborated in a team environment.'
-    ]
-  },
-  {
-    company: 'Teragon Ed.Tech, Hassan',
-    position: 'Intern — Blockchain / Cloud Computing / Web 3.0',
-    date: 'Oct – Nov 2022',
-    description: [
-      'Gained practical experience in decentralized systems, cloud platform, and web technologies.'
-    ]
-  }
-];
-
 const Experience = () => {
+  const [experiences, setExperiences] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/experience')
+      .then(res => res.json())
+      .then(data => setExperiences(data));
+  }, []);
+
+  if (!experiences) return <div>Loading...</div>;
+  if (!Array.isArray(experiences)) return <div>No experience found.</div>;
+
   return (
     <div className="experience-page">
       <div className="container">
@@ -47,7 +30,7 @@ const Experience = () => {
         <div className="experience-timeline">
           {experiences.map((exp, idx) => (
             <motion.div
-              key={idx}
+              key={exp.id || idx}
               initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -64,13 +47,11 @@ const Experience = () => {
                 <div className="experience-meta">
                   <div className="date-range">
                     <FaCalendarAlt />
-                    <span>{exp.date}</span>
+                    <span>{exp.start_date} - {exp.is_current ? 'Present' : exp.end_date}</span>
                   </div>
                 </div>
                 <ul>
-                  {exp.description.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
+                  <li>{exp.description}</li>
                 </ul>
               </div>
               <div className="timeline-dot"></div>

@@ -188,7 +188,7 @@ const Contact = () => {
             </form>
             {submitStatus === 'success' && (
               <div className="success-message">
-                Thank you! Your message has been sent.
+                Thank you! Your message has been sent. A confirmation email has been sent to your address.
               </div>
             )}
             {submitStatus === 'error' && (

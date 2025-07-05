@@ -5,12 +5,9 @@ const db = require('../config/database');
 // GET all skills
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await db.execute(
-      'SELECT * FROM skills ORDER BY category, proficiency_level DESC'
-    );
+    const [rows] = await db.execute('SELECT * FROM skills ORDER BY category');
     res.json(rows);
   } catch (error) {
-    console.error('Error fetching skills:', error);
     res.status(500).json({ message: 'Error fetching skills' });
   }
 });

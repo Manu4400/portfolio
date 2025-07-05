@@ -1,6 +1,6 @@
 -- Create database
 CREATE DATABASE IF NOT EXISTS portfolio_db;
-USE portfolio_db;
+USE portfolio_db   ;
 
 -- About table
 CREATE TABLE IF NOT EXISTS about (
@@ -25,7 +25,6 @@ CREATE TABLE IF NOT EXISTS skills (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     category VARCHAR(50) NOT NULL,
-    proficiency_level INT NOT NULL CHECK (proficiency_level BETWEEN 1 AND 100),
     icon VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -76,38 +75,81 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 -- Insert sample data
 
 -- About data
-INSERT INTO about (name, title, description, email, phone, location, linkedin_url, github_url) VALUES 
-('Your Name', 'Full Stack Developer', 'Passionate full-stack developer with expertise in modern web technologies. I love creating innovative solutions and turning ideas into reality through clean, efficient code.', 'your.email@example.com', '+1 (555) 123-4567', 'Your City, Country', 'https://linkedin.com/in/yourprofile', 'https://github.com/yourusername');
+INSERT INTO about (
+  name, 
+  title, 
+  description, 
+  email, 
+  phone, 
+  location, 
+  linkedin_url, 
+  github_url,
+  resume_url,
+  profile_image
+) VALUES (
+  'M R MANOHAR',
+  'Computer Science Student',
+  'Detail-oriented computer science student with strong problem-solving skills in data structures and algorithms, adept at optimising solutions. Proficient in Java, C, HTML, and CSS. Committed to writing clean, scalable, and efficient code.',
+  'manoharmr1234@gmail.com',
+  '+91 8296705600',
+  'Bengaluru, India',
+  'https://www.linkedin.com/in/manohar-m-r-a6411222b/',
+  'https://github.com/Manu4400',
+  '/Resume.pdf',
+  '/WhatsApp Image 2025-07-03 at 7.07.24 PM.jpeg'
+);
 
 -- Skills data
-INSERT INTO skills (name, category, proficiency_level, icon) VALUES 
-('JavaScript', 'Frontend', 90, 'fab fa-js-square'),
-('React', 'Frontend', 85, 'fab fa-react'),
-('Node.js', 'Backend', 80, 'fab fa-node-js'),
-('Express.js', 'Backend', 85, 'fas fa-server'),
-('MySQL', 'Database', 75, 'fas fa-database'),
-('MongoDB', 'Database', 70, 'fas fa-leaf'),
-('HTML5', 'Frontend', 95, 'fab fa-html5'),
-('CSS3', 'Frontend', 90, 'fab fa-css3-alt'),
-('Python', 'Backend', 75, 'fab fa-python'),
-('Git', 'Tools', 85, 'fab fa-git-alt'),
-('Docker', 'DevOps', 65, 'fab fa-docker'),
-('AWS', 'Cloud', 60, 'fab fa-aws');
+INSERT INTO skills (name, category, icon) VALUES
+('Java', 'Programming Language', 'fab fa-java'),
+('C', 'Programming Language', 'fas fa-c'),
+('Python', 'Programming Language', 'fab fa-python'),
+('HTML', 'Frontend', 'fab fa-html5'),
+('CSS', 'Frontend', 'fab fa-css3-alt'),
+('JavaScript', 'Frontend', 'fab fa-js-square'),
+('SQL', 'Database', 'fas fa-database'),
+('DSA', 'Programming Concept', 'fas fa-code'),
+('React.js', 'Frontend', 'fab fa-react'),
+('Node.js', 'Backend', 'fab fa-node-js'),
+('Spring Boot', 'Backend', 'fas fa-leaf'),
+('MongoDB', 'Database', 'fas fa-leaf'),
+('TensorFlow', 'Tools', 'fas fa-brain'),
+('Raspberry Pi', 'Tools', 'fas fa-microchip'),
+('Figma', 'Design', 'fab fa-figma');
 
 -- Projects data
-INSERT INTO projects (title, description, long_description, technologies, project_url, github_url, image_url, featured, status) VALUES 
-('E-Commerce Platform', 'A full-featured e-commerce platform with user authentication, payment integration, and admin dashboard.', 'Built a comprehensive e-commerce solution using React for the frontend and Node.js with Express for the backend. Features include user registration/login, product catalog, shopping cart, payment processing with Stripe, order management, and an admin panel for inventory management.', 'React, Node.js, Express, MySQL, Stripe API, JWT', 'https://yourproject.com', 'https://github.com/yourusername/ecommerce', '/uploads/ecommerce-project.jpg', TRUE, 'completed'),
+INSERT INTO projects (
+  title,
+  description,
+  long_description,
+  technologies,
+  project_url,
+  github_url,
+  image_url,
+  featured,
+  status
+) VALUES
+('EcoTrap – Wildlife Protection', 'AI-powered smart trap using IoT and image processing', 'Developed an ethical animal detection and alert system using Python, TensorFlow, OpenCV, Raspberry Pi, ESP32, and Telegram API. Published in IJIRT 171882.', 'Python, TensorFlow, OpenCV, Raspberry Pi, ESP32, Telegram API', NULL, NULL, NULL, TRUE, 'completed'),
 
-('Task Management App', 'A collaborative task management application with real-time updates and team collaboration features.', 'Developed a modern task management application that allows teams to create projects, assign tasks, set deadlines, and track progress in real-time. Implemented WebSocket for live updates and used Redux for state management.', 'React, Redux, Socket.io, Node.js, MongoDB', 'https://taskmanager.com', 'https://github.com/yourusername/taskmanager', '/uploads/taskmanager-project.jpg', TRUE, 'completed'),
+('PrepSprint – Placement Guide', 'Interview prep web app', 'Built with HTML, CSS, and JavaScript. Provides resources and practice for placement preparation. Deployed on Netlify.', 'HTML, CSS, JavaScript', 'https://curious-rabanadas-8cf4f7.netlify.app', NULL, NULL, TRUE, 'completed'),
 
-('Weather Dashboard', 'A responsive weather dashboard that displays current weather and forecasts for multiple cities.', 'Created a beautiful weather dashboard that fetches data from multiple weather APIs, displays current conditions, 7-day forecasts, and weather maps. Features include location search, favorites, and weather alerts.', 'React, Weather API, Chart.js, Styled Components', 'https://weatherdash.com', 'https://github.com/yourusername/weather', '/uploads/weather-project.jpg', FALSE, 'completed'),
+('E-commerce Website', 'Proshop: Full-featured e-commerce website', 'Developed using MongoDB, Node.js, Express.js, and React.js. Includes product catalog, shopping cart, and user authentication.', 'MongoDB, Node.js, Express.js, React.js', NULL, NULL, NULL, FALSE, 'completed'),
 
-('Portfolio Website', 'This portfolio website showcasing my projects and skills.', 'Built this portfolio website using the MERN stack with MySQL to showcase my projects, skills, and experience. Features a modern design, responsive layout, contact form, and admin panel for content management.', 'React, Node.js, Express, MySQL, CSS3', NULL, 'https://github.com/yourusername/portfolio', '/uploads/portfolio-project.jpg', TRUE, 'completed');
+('Case Management System', 'Reminder system for legal professionals', 'Built a system to help legal professionals manage case reminders using MongoDB, Node.js, HTML, CSS, and JavaScript.', 'MongoDB, Node.js, HTML, CSS, JavaScript', NULL, NULL, NULL, FALSE, 'completed');
 
 -- Experience data
-INSERT INTO experience (company, position, description, start_date, end_date, is_current, company_url, location) VALUES 
-('Tech Solutions Inc.', 'Full Stack Developer', 'Developed and maintained web applications using React, Node.js, and MySQL. Collaborated with cross-functional teams to deliver high-quality software solutions. Implemented responsive designs and optimized application performance.', '2022-01-15', NULL, TRUE, 'https://techsolutions.com', 'Remote'),
+INSERT INTO experience (
+  company,
+  position,
+  description,
+  start_date,
+  end_date,
+  is_current,
+  company_url,
+  location
+) VALUES
+('Vstan4u Solution, Bengaluru', 'Intern — Java FullStack', 'Gained practical experience in developing websites using core Java, Spring Boot, HTML, CSS, and JS.', '2025-02-01', '2025-06-30', FALSE, NULL, 'Bengaluru, India'),
 
-('Digital Innovations LLC', 'Frontend Developer', 'Created user-friendly web interfaces using React and modern CSS frameworks. Worked closely with UX/UI designers to implement pixel-perfect designs. Improved website performance and implemented accessibility best practices.', '2021-03-01', '2021-12-31', FALSE, 'https://digitalinnovations.com', 'New York, NY'),
+('Inventron Technologies, Bengaluru', 'Intern — Innovation and Entrepreneurship', 'Designed a solar-powered mobile charging case and developed its prototype and business plan. Conducted market research and collaborated in a team environment.', '2023-10-01', '2023-11-30', FALSE, NULL, 'Bengaluru, India'),
 
-('StartupXYZ', 'Junior Web Developer', 'Built responsive websites and web applications using HTML, CSS, JavaScript, and PHP. Participated in code reviews and learned best practices for web development. Contributed to both frontend and backend development tasks.', '2020-06-01', '2021-02-28', FALSE, 'https://startupxyz.com', 'San Francisco, CA'); 
+('Teragon Ed.Tech, Hassan', 'Intern — Blockchain / Cloud Computing / Web 3.0', 'Gained practical experience in decentralized systems, cloud platforms, and web technologies.', '2022-10-01', '2022-11-30', FALSE, NULL, 'Hassan, India'); 

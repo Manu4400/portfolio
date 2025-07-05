@@ -50,29 +50,28 @@ router.get('/:id', async (req, res) => {
 
 // POST new contact message
 router.post('/', async (req, res) => {
-  const { name, email, subject, message } = req.body;
+  const { email, message } = req.body;
 
-  // Configure your email transport
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.CONTACT_EMAIL,      // your email from .env
-      pass: process.env.CONTACT_EMAIL_PASS  // your app password from .env
+      user: process.env.CONTACT_EMAIL,
+      pass: process.env.CONTACT_EMAIL_PASS
     }
   });
 
   const mailOptions = {
-    from: email,
-    to: process.env.CONTACT_EMAIL,          // your email from .env
-    subject: `Portfolio Contact: ${subject}`,
-    text: `Name: ${name}\nEmail: ${email}\n\n${message}`
+    from: process.env.CONTACT_EMAIL, // must be your own email for Gmail
+    to: process.env.CONTACT_EMAIL,
+    replyTo: email, // this makes replies go to the sender
+    subject: 'New Contact Form Submission',
+    text: `You received a new message from your portfolio contact form:\n\nSender Email: ${email}\n\nMessage:\n${message}`
   };
 
   try {
     await transporter.sendMail(mailOptions);
     res.status(200).json({ message: 'Message sent successfully!' });
   } catch (error) {
-    console.error('Nodemailer error:', error);
     res.status(500).json({ message: 'Failed to send message.', error });
   }
 });

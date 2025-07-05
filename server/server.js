@@ -63,6 +63,8 @@ app.use('*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
+app.set('trust proxy', 1);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 }); 
